@@ -96,6 +96,86 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-body;
+    background-color: #08070c;
+    background-image:
+      radial-gradient(
+        circle at 20% 10%,
+        rgba(168, 85, 247, 0.12),
+        transparent 45%
+      ),
+      radial-gradient(
+        circle at 80% 30%,
+        rgba(34, 211, 238, 0.08),
+        transparent 40%
+      ),
+      radial-gradient(
+        circle at 50% 90%,
+        rgba(225, 29, 143, 0.1),
+        transparent 50%
+      );
+  }
+}
+
+@layer utilities {
+  .carbon-texture {
+    background-image:
+      linear-gradient(335deg, rgba(255, 255, 255, 0.02) 23px, transparent 23px),
+      linear-gradient(155deg, rgba(255, 255, 255, 0.02) 23px, transparent 23px);
+    background-size: 58px 58px;
+  }
+
+  .glass {
+    background: rgba(20, 16, 30, 0.55);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(168, 85, 247, 0.18);
+  }
+
+  .glass-hover {
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .glass-hover:hover {
+    border-color: rgba(168, 85, 247, 0.6);
+    box-shadow:
+      0 0 30px rgba(168, 85, 247, 0.25),
+      inset 0 0 20px rgba(168, 85, 247, 0.05);
+    transform: translateY(-4px);
+  }
+
+  .metallic-text {
+    background: linear-gradient(
+      180deg,
+      #ffffff 0%,
+      #d4d4d8 30%,
+      #71717a 60%,
+      #e4e4e7 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 18px rgba(168, 85, 247, 0.55))
+      drop-shadow(0 2px 4px rgba(0, 0, 0, 0.8));
+  }
+
+  .neon-text-cyan {
+    color: #22d3ee;
+    text-shadow: 0 0 12px rgba(34, 211, 238, 0.7);
+  }
+
+  .neon-text-green {
+    background: linear-gradient(90deg, #4ade80, #22d3ee);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 10px rgba(74, 222, 128, 0.5));
+  }
+
+  .gradient-btn {
+    background: linear-gradient(135deg, #a855f7, #e11d8f);
+    transition: all 0.3s ease;
+  }
+  .gradient-btn:hover {
+    box-shadow: 0 0 28px rgba(225, 29, 143, 0.55);
+    filter: brightness(1.12);
   }
 }
