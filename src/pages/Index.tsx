@@ -70,24 +70,32 @@ const REVIEW_TEXTS = [
   'Брал в подарок — упаковали красиво, добавили приятный бонус. Качество отличное, всем советую.',
 ];
 
+function seededRand(seed: number) {
+  const x = Math.sin(seed + 1) * 43758.5453123;
+  return x - Math.floor(x);
+}
+
 function makeReviews(count: number) {
   const out = [];
   for (let i = 0; i < count; i++) {
     const isF = i % 2 === 0;
     const name = isF
-      ? `${FIRST_NAMES_F[(i * 7) % FIRST_NAMES_F.length]} ${LAST_NAMES_F[(i * 3) % LAST_NAMES_F.length]}`
-      : `${FIRST_NAMES_M[(i * 7) % FIRST_NAMES_M.length]} ${LAST_NAMES_M[(i * 3) % LAST_NAMES_M.length]}`;
-    const r = i % 25 === 0 ? 3 : i % 9 === 0 ? 4 : 5;
-    const day = String((i % 28) + 1).padStart(2, '0');
-    const month = String((i % 12) + 1).padStart(2, '0');
-    const year = 2025 + (i % 2);
-    const hh = String((i * 13) % 24).padStart(2, '0');
-    const mm = String((i * 7) % 60).padStart(2, '0');
+      ? `${FIRST_NAMES_F[Math.floor(seededRand(i * 3) * FIRST_NAMES_F.length)]} ${LAST_NAMES_F[Math.floor(seededRand(i * 7 + 1) * LAST_NAMES_F.length)]}`
+      : `${FIRST_NAMES_M[Math.floor(seededRand(i * 5) * FIRST_NAMES_M.length)]} ${LAST_NAMES_M[Math.floor(seededRand(i * 11 + 2) * LAST_NAMES_M.length)]}`;
+
+    const r = seededRand(i * 13) < 0.04 ? 3 : seededRand(i * 17) < 0.18 ? 4 : 5;
+
+    const day = String(Math.floor(seededRand(i * 2 + 3) * 27) + 1).padStart(2, '0');
+    const month = String(Math.floor(seededRand(i * 4 + 5) * 12) + 1).padStart(2, '0');
+    const year = seededRand(i * 6 + 7) < 0.45 ? 2025 : 2026;
+    const hh = String(Math.floor(seededRand(i * 8 + 9) * 23)).padStart(2, '0');
+    const mm = String(Math.floor(seededRand(i * 9 + 1) * 59)).padStart(2, '0');
+
     out.push({
       name,
       rating: r,
       date: `${day}.${month}.${year} ${hh}:${mm}`,
-      text: REVIEW_TEXTS[i % REVIEW_TEXTS.length],
+      text: REVIEW_TEXTS[Math.floor(seededRand(i * 19 + 3) * REVIEW_TEXTS.length)],
     });
   }
   return out;
@@ -153,6 +161,7 @@ export default function Index() {
   const [payOpen, setPayOpen] = useState(false);
   const [payProduct, setPayProduct] = useState<string>('');
   const [copied, setCopied] = useState(false);
+  const [lightbox, setLightbox] = useState<{ img: string; name: string } | null>(null);
 
   const suggestions = useMemo(() => {
     if (!search.trim()) return [];
@@ -311,8 +320,16 @@ export default function Index() {
             <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
               {filtered.map((p) => (
                 <div key={p.id} className="glass glass-hover overflow-hidden rounded-2xl">
-                  <div className="relative h-48 overflow-hidden bg-black/40">
-                    <img src={p.img} alt={p.name} className="h-full w-full object-cover" />
+                  <div
+                    className="relative h-48 overflow-hidden bg-black/40 cursor-zoom-in group"
+                    onClick={() => setLightbox({ img: p.img, name: p.name })}
+                  >
+                    <img src={p.img} alt={p.name} className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" />
+                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/30">
+                      <div className="rounded-full bg-black/60 p-2 ring-1 ring-neon-cyan/50">
+                        <Icon name="ZoomIn" size={22} className="text-neon-cyan" />
+                      </div>
+                    </div>
                   </div>
                   <div className="p-4">
                     <h3 className="font-display text-lg font-semibold text-zinc-100">{p.name}</h3>
@@ -512,6 +529,29 @@ export default function Index() {
           </div>
         </DialogContent>
       </Dialog>
+
+      {/* LIGHTBOX */}
+      {lightbox && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 backdrop-blur-sm animate-fade-in"
+          onClick={() => setLightbox(null)}
+        >
+          <div className="relative max-h-[90vh] max-w-[90vw]" onClick={(e) => e.stopPropagation()}>
+            <img
+              src={lightbox.img}
+              alt={lightbox.name}
+              className="max-h-[85vh] max-w-[85vw] rounded-2xl object-contain shadow-[0_0_60px_rgba(168,85,247,0.3)]"
+            />
+            <p className="mt-3 text-center font-display text-lg tracking-wider text-zinc-200">{lightbox.name}</p>
+            <button
+              onClick={() => setLightbox(null)}
+              className="absolute -right-3 -top-3 flex h-9 w-9 items-center justify-center rounded-full bg-zinc-800 ring-1 ring-neon-purple/40 hover:bg-zinc-700"
+            >
+              <Icon name="X" size={18} className="text-zinc-200" />
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
