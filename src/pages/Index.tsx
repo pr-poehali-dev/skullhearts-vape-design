@@ -40,8 +40,6 @@ const PRODUCTS = [
   { id: 2, name: 'Pasito 3', desc: 'Smoant, Pod-kit, K-Series Coils', price: '2 400 ₽', img: PASITO3_IMG },
   { id: 3, name: 'Aegis Hero 5', desc: 'Geekvape, Pod-kit, 30W, OLED', price: '2 000 ₽', img: AEGIS5_IMG },
   { id: 4, name: 'XROS 5 Mini', desc: 'Vaporesso, Pod, Corex 3.0, 0.6Ω', price: '1 800 ₽', img: XROS5_IMG },
-  { id: 5, name: 'Cyber Drag S', desc: 'Pod-мод, регулировка', price: '5 290 ₽', img: VAPE_IMG },
-  { id: 6, name: 'Voidwalker MTL', desc: 'Бак для крепкого пара', price: '4 190 ₽', img: VAPE_IMG },
 ];
 
 const FIRST_NAMES_M = ['Алексей', 'Дмитрий', 'Сергей', 'Артём', 'Максим', 'Иван', 'Андрей', 'Михаил', 'Никита', 'Егор', 'Роман', 'Павел', 'Денис', 'Кирилл', 'Владислав', 'Антон', 'Илья', 'Александр', 'Виктор', 'Глеб'];
