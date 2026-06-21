@@ -486,7 +486,7 @@ export default function Index() {
 
       <footer className="border-t border-neon-purple/15 py-8 text-center text-sm text-zinc-500">
         <p className="font-display tracking-widest metallic-text text-lg">SKULLHEARTS</p>
-        <p className="mt-2">© 2026 · Только для лиц старше 18 лет</p>
+        <p className="mt-2">© 2020 · Только для лиц старше 18 лет</p>
       </footer>
 
       {/* PAYMENT MODAL */}
