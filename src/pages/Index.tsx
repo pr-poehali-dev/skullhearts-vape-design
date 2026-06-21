@@ -17,6 +17,7 @@ import {
 
 const SKULL_IMG = 'https://cdn.poehali.dev/projects/285025e8-62a6-4ac3-89f7-fd6bcef5ad76/files/2a0a65e8-d4c2-4753-b496-6aa7983b818c.jpg';
 const VAPE_IMG = 'https://cdn.poehali.dev/projects/285025e8-62a6-4ac3-89f7-fd6bcef5ad76/files/79dce641-5684-4f62-b018-30e65bdb7bed.jpg';
+const PASITO2_IMG = 'https://cdn.poehali.dev/projects/285025e8-62a6-4ac3-89f7-fd6bcef5ad76/bucket/94c795ea-77b5-450e-aeb1-1f7cf8ab48c6.jpg';
 
 const TELEGRAM = '@Ekaterinamoneys';
 
@@ -32,12 +33,12 @@ const NAV: { id: Tab; label: string; icon: string }[] = [
 ];
 
 const PRODUCTS = [
-  { id: 1, name: 'SKULL Nova X', desc: 'Pod-система, 1500 мАч', price: '3 990 ₽' },
-  { id: 2, name: 'HEARTS Pulse Pro', desc: 'Бокс-мод, 80W, OLED', price: '6 490 ₽' },
-  { id: 3, name: 'Phantom Mini', desc: 'Компактный pod, 900 мАч', price: '2 790 ₽' },
-  { id: 4, name: 'Neon Reaper', desc: 'Сабомный мод, 100W', price: '7 990 ₽' },
-  { id: 5, name: 'Cyber Drag S', desc: 'Pod-мод, регулировка', price: '5 290 ₽' },
-  { id: 6, name: 'Voidwalker MTL', desc: 'Бак для крепкого пара', price: '4 190 ₽' },
+  { id: 1, name: 'Pasito 2', desc: 'Smoant, Pod-kit, 80W, OLED, Limited Edition', price: '2 200 ₽', img: PASITO2_IMG },
+  { id: 2, name: 'HEARTS Pulse Pro', desc: 'Бокс-мод, 80W, OLED', price: '6 490 ₽', img: VAPE_IMG },
+  { id: 3, name: 'Phantom Mini', desc: 'Компактный pod, 900 мАч', price: '2 790 ₽', img: VAPE_IMG },
+  { id: 4, name: 'Neon Reaper', desc: 'Сабомный мод, 100W', price: '7 990 ₽', img: VAPE_IMG },
+  { id: 5, name: 'Cyber Drag S', desc: 'Pod-мод, регулировка', price: '5 290 ₽', img: VAPE_IMG },
+  { id: 6, name: 'Voidwalker MTL', desc: 'Бак для крепкого пара', price: '4 190 ₽', img: VAPE_IMG },
 ];
 
 const FIRST_NAMES_M = ['Алексей', 'Дмитрий', 'Сергей', 'Артём', 'Максим', 'Иван', 'Андрей', 'Михаил', 'Никита', 'Егор', 'Роман', 'Павел', 'Денис', 'Кирилл', 'Владислав', 'Антон', 'Илья', 'Александр', 'Виктор', 'Глеб'];
@@ -310,7 +311,7 @@ export default function Index() {
               {filtered.map((p) => (
                 <div key={p.id} className="glass glass-hover overflow-hidden rounded-2xl">
                   <div className="relative h-48 overflow-hidden bg-black/40">
-                    <img src={VAPE_IMG} alt={p.name} className="h-full w-full object-cover" />
+                    <img src={p.img} alt={p.name} className="h-full w-full object-cover" />
                   </div>
                   <div className="p-4">
                     <h3 className="font-display text-lg font-semibold text-zinc-100">{p.name}</h3>
