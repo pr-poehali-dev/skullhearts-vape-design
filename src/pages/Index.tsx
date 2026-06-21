@@ -20,6 +20,7 @@ const VAPE_IMG = 'https://cdn.poehali.dev/projects/285025e8-62a6-4ac3-89f7-fd6bc
 const PASITO2_IMG = 'https://cdn.poehali.dev/projects/285025e8-62a6-4ac3-89f7-fd6bcef5ad76/bucket/94c795ea-77b5-450e-aeb1-1f7cf8ab48c6.jpg';
 const PASITO3_IMG = 'https://cdn.poehali.dev/projects/285025e8-62a6-4ac3-89f7-fd6bcef5ad76/bucket/6fdf3e7e-f5da-4ba6-b306-b10f95365a04.jpg';
 const AEGIS5_IMG = 'https://cdn.poehali.dev/projects/285025e8-62a6-4ac3-89f7-fd6bcef5ad76/bucket/b8ec2730-4436-4c7f-97db-e1a3a9462242.jpg';
+const XROS5_IMG = 'https://cdn.poehali.dev/projects/285025e8-62a6-4ac3-89f7-fd6bcef5ad76/bucket/26cabafc-210e-45cc-9c14-9ddadcad868f.jpg';
 
 const TELEGRAM = '@Ekaterinamoneys';
 
@@ -38,7 +39,7 @@ const PRODUCTS = [
   { id: 1, name: 'Pasito 2', desc: 'Smoant, Pod-kit, 80W, OLED, Limited Edition', price: '2 200 ₽', img: PASITO2_IMG },
   { id: 2, name: 'Pasito 3', desc: 'Smoant, Pod-kit, K-Series Coils', price: '2 400 ₽', img: PASITO3_IMG },
   { id: 3, name: 'Aegis Hero 5', desc: 'Geekvape, Pod-kit, 30W, OLED', price: '2 000 ₽', img: AEGIS5_IMG },
-  { id: 4, name: 'Neon Reaper', desc: 'Сабомный мод, 100W', price: '7 990 ₽', img: VAPE_IMG },
+  { id: 4, name: 'XROS 5 Mini', desc: 'Vaporesso, Pod, Corex 3.0, 0.6Ω', price: '1 800 ₽', img: XROS5_IMG },
   { id: 5, name: 'Cyber Drag S', desc: 'Pod-мод, регулировка', price: '5 290 ₽', img: VAPE_IMG },
   { id: 6, name: 'Voidwalker MTL', desc: 'Бак для крепкого пара', price: '4 190 ₽', img: VAPE_IMG },
 ];
