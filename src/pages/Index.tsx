@@ -40,18 +40,58 @@ const PRODUCTS = [
   { id: 6, name: 'Voidwalker MTL', desc: 'Бак для крепкого пара', price: '4 190 ₽' },
 ];
 
-const REVIEWS = [
-  { name: 'Алексей Иванов', rating: 5, date: '23.01.2026 14:30', text: 'Заказал Nova X — пришёл за два дня. Пар плотный, вкус насыщенный, держит заряд весь день. Однозначно рекомендую!' },
-  { name: 'Мария Смирнова', rating: 5, date: '07.03.2025 09:15', text: 'Очень довольна сервисом. Поддержка ответила моментально, помогли выбрать. Устройство красивое, в руке лежит идеально.' },
-  { name: 'Дмитрий Кузнецов', rating: 4, date: '15.07.2025 22:40', text: 'Pulse Pro огонь, экран яркий. Снял звезду только за упаковку — пришла слегка помятой, но само устройство целое.' },
-  { name: 'Екатерина Петрова', rating: 5, date: '11.11.2025 18:05', text: 'Беру здесь уже третий раз. Качество стабильно высокое, цены адекватные. Доставка быстрая, всё как описано.' },
-  { name: 'Сергей Васильев', rating: 5, date: '02.05.2025 12:22', text: 'Neon Reaper мощный зверь, мощности хватает с запасом. Батарея живучая. Спасибо за честный магазин!' },
-  { name: 'Анна Соколова', rating: 4, date: '29.09.2025 16:48', text: 'Phantom Mini идеален для города — маленький и незаметный. Вкус передаёт отлично. Хотелось бы больше расцветок.' },
-  { name: 'Артём Михайлов', rating: 5, date: '18.02.2026 10:10', text: 'Лучший вейп-шоп, что встречал. Оригинал, гарантия, нормальные люди на связи. Буду заказывать ещё.' },
-  { name: 'Наталья Новикова', rating: 5, date: '06.06.2025 20:33', text: 'Cyber Drag S просто космос — настройки гибкие, дизайн готичный, как раз мой стиль. Всё работает без нареканий.' },
-  { name: 'Максим Фёдоров', rating: 3, date: '14.08.2025 13:57', text: 'Устройство хорошее, но доставка задержалась на день. По качеству вопросов нет, пар вкусный.' },
-  { name: 'Юлия Морозова', rating: 5, date: '25.12.2025 21:15', text: 'Подарила парню Voidwalker MTL — он в восторге! Тяга мягкая, вкус крепкий. Магазину доверяю на 100%.' },
+const FIRST_NAMES_M = ['Алексей', 'Дмитрий', 'Сергей', 'Артём', 'Максим', 'Иван', 'Андрей', 'Михаил', 'Никита', 'Егор', 'Роман', 'Павел', 'Денис', 'Кирилл', 'Владислав', 'Антон', 'Илья', 'Александр', 'Виктор', 'Глеб'];
+const FIRST_NAMES_F = ['Мария', 'Екатерина', 'Анна', 'Наталья', 'Юлия', 'Ольга', 'Дарья', 'Елена', 'Виктория', 'Ксения', 'Полина', 'Алина', 'Татьяна', 'Ирина', 'Светлана', 'Марина', 'Кристина', 'Вероника', 'София', 'Любовь'];
+const LAST_NAMES_M = ['Иванов', 'Кузнецов', 'Васильев', 'Михайлов', 'Фёдоров', 'Смирнов', 'Попов', 'Соколов', 'Лебедев', 'Козлов', 'Новиков', 'Морозов', 'Волков', 'Зайцев', 'Павлов', 'Семёнов', 'Голубев', 'Виноградов', 'Богданов', 'Воробьёв'];
+const LAST_NAMES_F = ['Иванова', 'Смирнова', 'Петрова', 'Соколова', 'Новикова', 'Морозова', 'Васильева', 'Кузнецова', 'Попова', 'Лебедева', 'Козлова', 'Волкова', 'Зайцева', 'Павлова', 'Семёнова', 'Голубева', 'Богданова', 'Воробьёва', 'Фёдорова', 'Михайлова'];
+
+const REVIEW_TEXTS = [
+  'Заказал устройство — пришло за два дня. Пар плотный, вкус насыщенный, держит заряд весь день. Однозначно рекомендую!',
+  'Очень довольна сервисом. Поддержка ответила моментально, помогли выбрать. Устройство красивое, в руке лежит идеально.',
+  'Огонь, экран яркий, настройки гибкие. Снял звезду только за упаковку — пришла слегка помятой, но само устройство целое.',
+  'Беру здесь уже третий раз. Качество стабильно высокое, цены адекватные. Доставка быстрая, всё как описано.',
+  'Мощный зверь, мощности хватает с запасом. Батарея живучая. Спасибо за честный магазин!',
+  'Идеален для города — маленький и незаметный. Вкус передаёт отлично. Хотелось бы больше расцветок.',
+  'Лучший вейп-шоп, что встречал. Оригинал, гарантия, нормальные люди на связи. Буду заказывать ещё.',
+  'Просто космос — настройки гибкие, дизайн готичный, как раз мой стиль. Всё работает без нареканий.',
+  'Устройство хорошее, но доставка задержалась на день. По качеству вопросов нет, пар вкусный.',
+  'Подарила парню — он в восторге! Тяга мягкая, вкус крепкий. Магазину доверяю на 100%.',
+  'Качество сборки на высоте, материалы приятные. Заряжается быстро, держит долго. Рекомендую!',
+  'Брал на пробу, остался очень доволен. Менеджер всё подробно объяснил, помог с выбором жидкости.',
+  'Дизайн просто шикарный, выглядит дорого. Пар густой, вкус не пропадает. Спасибо за крутой товар!',
+  'Доставка молниеносная, упаковка надёжная. Устройство работает идеально уже месяц. Всё супер.',
+  'Цена-качество на высоте. Перепробовал много магазинов — этот лучший по сервису и ассортименту.',
+  'Отличный вкус и плотный пар. Батареи хватает на весь день активного использования. Доволен!',
+  'Заказывал ночью — утром уже подтвердили. Пришло в срок, всё работает. Буду рекомендовать друзьям.',
+  'Стильное устройство, удобно лежит в руке. Кнопки чёткие, экран информативный. Покупкой доволен.',
+  'Поддержка топ — ответили в течение минуты, решили вопрос с обменом без проблем. Респект!',
+  'Брал в подарок — упаковали красиво, добавили приятный бонус. Качество отличное, всем советую.',
 ];
+
+function makeReviews(count: number) {
+  const out = [];
+  for (let i = 0; i < count; i++) {
+    const isF = i % 2 === 0;
+    const name = isF
+      ? `${FIRST_NAMES_F[(i * 7) % FIRST_NAMES_F.length]} ${LAST_NAMES_F[(i * 3) % LAST_NAMES_F.length]}`
+      : `${FIRST_NAMES_M[(i * 7) % FIRST_NAMES_M.length]} ${LAST_NAMES_M[(i * 3) % LAST_NAMES_M.length]}`;
+    const r = i % 25 === 0 ? 3 : i % 9 === 0 ? 4 : 5;
+    const day = String((i % 28) + 1).padStart(2, '0');
+    const month = String((i % 12) + 1).padStart(2, '0');
+    const year = 2025 + (i % 2);
+    const hh = String((i * 13) % 24).padStart(2, '0');
+    const mm = String((i * 7) % 60).padStart(2, '0');
+    out.push({
+      name,
+      rating: r,
+      date: `${day}.${month}.${year} ${hh}:${mm}`,
+      text: REVIEW_TEXTS[i % REVIEW_TEXTS.length],
+    });
+  }
+  return out;
+}
+
+const REVIEWS = makeReviews(500);
 
 const RATING_STATS = [
   { stars: 5, pct: 78 },
@@ -59,15 +99,6 @@ const RATING_STATS = [
   { stars: 3, pct: 4 },
   { stars: 2, pct: 1 },
   { stars: 1, pct: 1 },
-];
-
-const BANKS = [
-  { name: 'Т-Банк', icon: 'CreditCard' },
-  { name: 'Альфа-Банк', icon: 'CreditCard' },
-  { name: 'СберБанк', icon: 'CreditCard' },
-  { name: 'ВТБ', icon: 'CreditCard' },
-  { name: 'СБП / QR', icon: 'QrCode' },
-  { name: 'Другое', icon: 'Ellipsis' },
 ];
 
 const FAQ = [
@@ -171,7 +202,7 @@ export default function Index() {
                 <Icon name={n.icon} size={16} />
                 {n.label}
                 {n.id === 'reviews' && (
-                  <span className="text-xs text-neon-magenta">542</span>
+                  <span className="text-xs text-neon-magenta">500</span>
                 )}
               </button>
             ))}
@@ -224,13 +255,13 @@ export default function Index() {
                   className="h-12 px-8 text-base border-neon-purple/40 bg-transparent text-zinc-200 hover:bg-neon-purple/10"
                 >
                   <Icon name="Star" size={18} className="mr-2 text-amber-400" />
-                  Отзывы (542)
+                  Отзывы (500)
                 </Button>
               </div>
               <div className="mt-16 grid w-full max-w-3xl grid-cols-3 gap-4">
                 {[
                   { v: '4.8★', l: 'Средний рейтинг' },
-                  { v: '542', l: 'Отзыва' },
+                  { v: '500', l: 'Отзывов' },
                   { v: '24/7', l: 'Поддержка' },
                 ].map((s) => (
                   <div key={s.l} className="glass glass-hover rounded-2xl p-5">
@@ -313,7 +344,7 @@ export default function Index() {
               <div className="glass rounded-2xl p-6 text-center h-fit">
                 <div className="font-display text-6xl font-bold neon-text-cyan">4.8</div>
                 <div className="mt-2 flex justify-center"><Stars rating={5} size={20} /></div>
-                <div className="mt-1 text-sm text-zinc-400">542 отзыва</div>
+                <div className="mt-1 text-sm text-zinc-400">500 отзывов</div>
                 <div className="mt-5 space-y-2">
                   {RATING_STATS.map((r) => (
                     <div key={r.stars} className="flex items-center gap-2 text-sm">
@@ -447,27 +478,35 @@ export default function Index() {
               Оплата заказа
             </DialogTitle>
           </DialogHeader>
-          <p className="text-sm text-zinc-400">{payProduct} · выберите банк</p>
-          <div className="grid grid-cols-3 gap-3">
-            {BANKS.map((b) => (
-              <button
-                key={b.name}
-                className="glass-hover flex flex-col items-center gap-2 rounded-xl border border-neon-purple/20 bg-black/30 p-3 text-center"
-              >
-                <Icon name={b.icon} size={22} className="text-neon-cyan" />
-                <span className="text-xs text-zinc-300">{b.name}</span>
-              </button>
-            ))}
-          </div>
-          <div className="space-y-3 pt-2">
-            <Input
-              placeholder="Номер карты"
-              type="password"
-              className="glass border-neon-purple/30 text-zinc-100 placeholder:text-zinc-500"
-            />
-            <Button className="gradient-btn h-11 w-full border-0 font-semibold text-white">
-              Оплатить {payProduct}
-            </Button>
+          <div className="flex flex-col items-center text-center">
+            <div className="flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-neon-purple/30 to-neon-magenta/30 ring-1 ring-neon-green/40">
+              <Icon name="Send" size={30} className="text-neon-green" />
+            </div>
+            <p className="mt-4 text-zinc-200">
+              <span className="font-semibold text-neon-cyan">{payProduct}</span>
+            </p>
+            <p className="mt-2 text-sm leading-relaxed text-zinc-400">
+              Для оформления заказа и получения реквизитов для оплаты напишите нам в Telegram —
+              менеджер пришлёт актуальные данные и поможет с доставкой.
+            </p>
+            <a
+              href={`https://t.me/${TELEGRAM.replace('@', '')}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-6 w-full"
+            >
+              <Button className="gradient-btn h-12 w-full border-0 text-base font-semibold text-white">
+                <Icon name="Send" size={18} className="mr-2" />
+                Написать в Telegram {TELEGRAM}
+              </Button>
+            </a>
+            <button
+              onClick={copyTg}
+              className="mt-3 inline-flex items-center gap-2 text-sm text-zinc-400 transition-colors hover:text-neon-green"
+            >
+              <Icon name={copied ? 'Check' : 'Copy'} size={15} />
+              {copied ? 'Скопировано!' : 'Скопировать ник'}
+            </button>
           </div>
         </DialogContent>
       </Dialog>
